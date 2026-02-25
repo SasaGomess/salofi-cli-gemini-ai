@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Menu {
     private static final Scanner sc = new Scanner(System.in);
 
-    private void exibeMenu() {
+    private static void exibeMenu() {
         var menu = """
                     1 - Cadastrar Artistas
                     2 - Cadastrar Músicas
@@ -22,7 +22,7 @@ public class Menu {
         System.out.println(menu);
     }
 
-    public void menuDeEscolha(App app){
+    public static void menuDeEscolha(App app){
         var opcao = 9;
         do {
             exibeMenu();

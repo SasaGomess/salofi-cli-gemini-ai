@@ -11,20 +11,17 @@ public class Artista {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(unique = true)
     private String nome;
+    @Enumerated(EnumType.STRING)
     private TipoArtista tipoArtista;
 
     public Artista(String nome, String tipoArtista) {
         this.nome = nome;
-        this.tipoArtista = TipoArtista.covertString(tipoArtista);
+        this.tipoArtista = TipoArtista.valueOf(tipoArtista.toUpperCase());
     }
 
-    @ManyToMany()
-    @JoinTable(
-            name = "artistas_musicas",
-            joinColumns = @JoinColumn(name = "id_artista"),
-            inverseJoinColumns = @JoinColumn(name = "id_musica")
-    )
+    @ManyToMany(mappedBy = "artistas")
     private List<Musica> musicas = new ArrayList<>();
 
     public List<Musica> getMusicas() {

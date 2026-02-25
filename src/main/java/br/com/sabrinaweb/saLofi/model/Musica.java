@@ -20,7 +20,12 @@ public class Musica {
         this.album = album;
     }
 
-    @ManyToMany(mappedBy = "musicas")
+    @ManyToMany()
+    @JoinTable(
+            name = "musicas_artistas",
+            joinColumns = @JoinColumn(name = "id_musicas"),
+            inverseJoinColumns = @JoinColumn(name = "id_artista")
+    )
     private List<Artista> artistas = new ArrayList<>();
 
     public List<Artista> getArtistas() {

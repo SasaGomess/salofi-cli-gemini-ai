@@ -24,11 +24,17 @@ public class App {
     }
 
     public void cadastrarArtista(Scanner sc){
-        System.out.println("Informe o nome do artista");
-        var nome = sc.nextLine();
-        System.out.println("Informe o tipo desse artista: (solo/dupla/grupo/banda)");
-        var tipo = sc.nextLine();
-        artistaService.criaArtista(nome, tipo);
+        char resp;
+        do{
+            System.out.println("Informe o nome do artista");
+            var nome = sc.nextLine();
+            System.out.println("Informe o tipo desse artista: (solo/dupla/grupo/banda)");
+            var tipo = sc.nextLine();
+            artistaService.criaArtista(nome, tipo);
+
+            System.out.println("Deseja cadastrar mais um artista? (s/n)");
+            resp = sc.nextLine().charAt(1);
+        }while (resp != 'n');
     }
 
     public void cadastrarMusica(Scanner sc) {
@@ -68,7 +74,7 @@ public class App {
         var nomeArtista = sc.nextLine();
 
         List<Musica> musicas = musicaService.acharMusicasPeloArtista(nomeArtista);
-        
+
         musicas.forEach(System.out::println);
     }
 

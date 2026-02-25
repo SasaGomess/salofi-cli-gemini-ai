@@ -16,6 +16,9 @@ public class Artista {
     @Enumerated(EnumType.STRING)
     private TipoArtista tipoArtista;
 
+    public Artista() {
+    }
+
     public Artista(String nome, String tipoArtista) {
         this.nome = nome;
         this.tipoArtista = TipoArtista.valueOf(tipoArtista.toUpperCase());
@@ -49,5 +52,11 @@ public class Artista {
 
     public void setTipoArtista(TipoArtista tipoArtista) {
         this.tipoArtista = tipoArtista;
+    }
+
+    @Override
+    public String toString() {
+        return "Artista: " +  nome + '\'' +
+                ", tipo do Artista:" + tipoArtista;
     }
 }

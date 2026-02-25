@@ -14,8 +14,10 @@ public class Musica {
     private String nome;
     private String album;
 
-    public Musica(Long id, String nome, String album) {
-        this.id = id;
+    public Musica(){
+    }
+
+    public Musica( String nome, String album) {
         this.nome = nome;
         this.album = album;
     }
@@ -60,5 +62,10 @@ public class Musica {
         this.album = album;
     }
 
-
+    @Override
+    public String toString() {
+        return "Musica:" + nome + '\'' +
+                ", album: '" + album + '\'' +
+                ", artistas: " + artistas;
+    }
 }
